@@ -1,4 +1,5 @@
 import os
+import django_heroku
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -17,9 +18,10 @@ SECRET_KEY = 'django-insecure-agu4_-w2cuqvi+3ipby2q773*7*j7^37dsw5ylzhf%to-ts$j7
 DEBUG = True
 
 #ALLOWED_HOSTS = ['localhost','87d3-223-185-132-168.ngrok-free.app']
-ALLOWED_HOSTS = ['localhost','e9fb-223-185-132-168.ngrok-free.app','127.0.0.1']
-ngrok_url = "https://e9fb-223-185-132-168.ngrok-free.app"
-CSRF_TRUSTED_ORIGINS = [ngrok_url]
+#ALLOWED_HOSTS = ['localhost','e9fb-223-185-132-168.ngrok-free.app','127.0.0.1']
+ALLOWED_HOSTS = ['*']
+#ngrok_url = "https://e9fb-223-185-132-168.ngrok-free.app"
+#CSRF_TRUSTED_ORIGINS = [ngrok_url]
 #CSRF_COOKIE_SECURE = True# Only send the CSRF cookie over HTTPS
 #CSRF_COOKIE_SAMESITE = 'Lax'  # Adjust the SameSite attribute as per your needs
 
@@ -137,6 +139,8 @@ STATIC_ROOT = BASE_DIR/'staticfiles'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT =os.path.join(BASE_DIR,'/media')
+
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
